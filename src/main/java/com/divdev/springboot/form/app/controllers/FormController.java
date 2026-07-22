@@ -7,15 +7,19 @@ import org.springframework.validation.BindingResult;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.divdev.springboot.form.app.models.domain.User;
 
 @Controller
+@SessionAttributes("user")
 public class FormController {
 
 	@GetMapping("/form")
 	public String getForm(Model model) {
 		User user = new User();
+		user.setIdentifier("987.654.123-F");
 		user.setName("Frieren");
 		user.setLastname("Doe");
 		model.addAttribute("title", "User Form");
@@ -24,7 +28,7 @@ public class FormController {
 	}
 
 	@PostMapping("/form")
-	public String postForm(@Valid User user,BindingResult result, Model model) {
+	public String postForm(@Valid User user,BindingResult result, Model model, SessionStatus status) {
 		
 		model.addAttribute("title", "Form Result");
 		if(result.hasErrors()) {
@@ -32,6 +36,7 @@ public class FormController {
 		}
 				
 		model.addAttribute("user", user);
+		status.setComplete();
 		return "result";
 	}
 

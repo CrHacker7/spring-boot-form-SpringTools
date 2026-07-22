@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotEmpty;
 
 public class User {
 
+	private String identifier;
+	
 	@NotEmpty
 	private String name;
 
@@ -18,6 +20,15 @@ public class User {
 
 	@NotEmpty
 	private String email;
+	
+
+	public String getIdentifier() {
+		return identifier;
+	}
+
+	public void setIdentifier(String identifier) {
+		this.identifier = identifier;
+	}
 
 	public String getName() {
 		return name;
