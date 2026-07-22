@@ -9,6 +9,15 @@
 	<form th:action="@{/form}" th:object="${user}" method="post">
 
 		<div>
+			<label for="identifier">Identifier</label>
+			<div>
+				<input type="text" id="identifier" th:field="*{identifier}">
+			</div>
+			<div th:if="${#fields.hasErrors('identifier')}" th:errors="*{identifier}"></div>
+
+		</div>
+		
+		<div>
 			<label for="username">Name</label>
 			<div>
 				<input type="text" id="name" th:field="*{name}">
@@ -16,16 +25,16 @@
 			<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
 
 		</div>
-		
+
 		<div>
 			<label for="username">Lastname</label>
 			<div>
 				<input type="text" id="lastname" th:field="*{lastname}">
 			</div>
 			<div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
-			
+
 		</div>
-		
+
 		<div>
 			<label for="username">Username</label>
 			<div>
