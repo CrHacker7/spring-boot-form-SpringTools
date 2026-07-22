@@ -1,8 +1,5 @@
 package com.divdev.springboot.form.app.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,17 +26,10 @@ public class FormController {
 		
 		model.addAttribute("title", "Form Result");
 		if(result.hasErrors()) {
-			Map<String, String> errors = new HashMap<>();
-			result.getFieldErrors().forEach(err -> {
-				errors.put(err.getField(), "Filed ".concat(err.getField().concat(" ").concat(err.getDefaultMessage())));
-			});
-			model.addAttribute("error", errors);
 			return "form";
 		}
 				
-		
 		model.addAttribute("user", user);
-		
 		return "result";
 	}
 
