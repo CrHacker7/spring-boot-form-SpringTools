@@ -8,3 +8,5 @@
 
 #### Validations
 - To preserve form data after a validation error, use `th:value="${user.username}"`. Ensure the property name matches the Java class field exactly, maintaining lowercase formatting, and the user class in lowercase.
+
+> [!warning] If you make changes in properties, it is required to restart the app.
